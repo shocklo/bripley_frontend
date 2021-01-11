@@ -1,40 +1,36 @@
-<mat-card>
-  <h1>Registro</h1>
+<mat-card class="registrerWarp">
+  <h1>Registro de nueva cuenta</h1>
   <form [formGroup]="registerFormGroup">
     <mat-form-field appearance="fill">
-      <mat-label>username</mat-label>
+      <mat-label>Rut</mat-label>
       <input matInput formControlName="username" type="text">
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
-      <mat-label>password</mat-label>
+      <mat-label>Contraseña</mat-label>
       <input matInput formControlName="password" type="text">
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
-      <mat-label>names</mat-label>
+      <mat-label>Nombres</mat-label>
       <input matInput formControlName="names" type="text">
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
-      <mat-label>last_names</mat-label>
+      <mat-label>Apellidos</mat-label>
       <input matInput formControlName="last_names" type="text">
     </mat-form-field>
-    <br>
+    <br>    
     <mat-form-field appearance="fill">
-      <mat-label>gender</mat-label>
-      <input matInput formControlName="gender" type="text">
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-      <mat-label>email</mat-label>
+      <mat-label>Email</mat-label>
       <input matInput formControlName="email" type="text">
     </mat-form-field>
     <br>
   </form>
   <br>
-  <button mat-raised-button [disabled]="registerInProgress" (click)="register()">Registrarse</button>
+  <button mat-raised-button [disabled]="registerInProgress" (click)="register()" class="registerBtn">Registrarse</button>
   <br>
   <br>
-  <a [routerLink]="['/','auth','login']">Iniciar sesión</a>
+  <button mat-flat-button [routerLink]="['/','auth','login']" class="loginBtn" class="registerBtn">Iniciar sesión</button>
+  
 </mat-card>

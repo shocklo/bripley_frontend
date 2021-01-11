@@ -1,1 +1,17 @@
-<p>transfer works!</p>
+<mat-card class="transfer-wrapper">
+    <h1>Transferencia de Saldo</h1>
+    <br>
+    <form [formGroup]="transferFormGroup">
+        <mat-form-field appearance="fill">
+            <mat-label>Destinatario (Rut)</mat-label>
+            <input matInput formControlName="id_user_to_transfer" type="text">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Cantidad a Transferir</mat-label>
+            <input matInput formControlName="ammount" type="number">
+        </mat-form-field>
+        <br>
+    </form>
+    <br>
+    <button mat-raised-button (click)="transfer()" class="transferBtn">Transferir Saldo</button>
+</mat-card>

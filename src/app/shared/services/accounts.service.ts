@@ -7,9 +7,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class AccountsService {
   private endPoint = `${environment.API_URL}/accounts`;
+  private endPointDeposit = `${environment.API_URL}/accounts/doDeposit`;
+  private endPointWithdraw = `${environment.API_URL}/accounts/doWithdraw`;
+  private endPointTransfer = `${environment.API_URL}/accounts/transfer`;
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getLoggedUserHistory = (): Promise<any> => {
     const url = `${this.endPoint}`;
@@ -17,4 +20,52 @@ export class AccountsService {
       .get<any>(url, { headers: this.httpHeaders })
       .toPromise();
   };
+
+  deposit = (
+    ammount: any
+  ): Promise<{ ammount; }> => {
+    const url = `${this.endPointDeposit}`;
+    return this.http
+      .post<{ ammount; }>(
+        url,
+        { ammount },
+        { headers: this.httpHeaders }
+      )
+      .toPromise();
+  };
+
+  withdraw = (
+    ammount: any
+  ): Promise<{ ammount; }> => {
+    const url = `${this.endPointWithdraw}`;
+    return this.http
+      .post<{ ammount; }>(
+        url,
+        { ammount },
+        { headers: this.httpHeaders }
+      )
+      .toPromise();
+  };
+
+  transfer = (
+    ammount: any,
+    id_user_to_transfer: any,
+  ): Promise<{ ammount; id_user_to_transfer; }> => {
+    const url = `${this.endPointTransfer}`;
+    return this.http
+      .post<{ ammount; id_user_to_transfer; }>(
+        url,
+        { ammount, id_user_to_transfer },
+        { headers: this.httpHeaders }
+      )
+      .toPromise();
+  };
+
+
+
+
+
 }
+
+
+

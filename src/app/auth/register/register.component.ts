@@ -22,8 +22,7 @@ export class RegisterComponent implements OnInit {
       username: new FormControl(null, [Validators.required]),
       password: new FormControl(null, [Validators.required]),
       names: new FormControl(null, [Validators.required]),
-      last_names: new FormControl(null, [Validators.required]),
-      gender: new FormControl(null, [Validators.required]),
+      last_names: new FormControl(null, [Validators.required]),    
       email: new FormControl(null, [Validators.required]),
     });
   }
@@ -41,8 +40,7 @@ export class RegisterComponent implements OnInit {
         registerFormGroupValue.username,
         registerFormGroupValue.password,
         registerFormGroupValue.names,
-        registerFormGroupValue.last_names,
-        registerFormGroupValue.gender,
+        registerFormGroupValue.last_names,      
         registerFormGroupValue.email
       );
       console.log(registerResult);

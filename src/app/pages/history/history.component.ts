@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AccountsService } from '../../shared/services/accounts.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-history',
@@ -10,16 +11,32 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class HistoryComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   displayedColumns = ['type_movement', 'from_user', 'to_user', 'ammount'];
   dataSource: MatTableDataSource<any>;
 
-  constructor(private accountsService: AccountsService) {}
+  constructor(private accountsService: AccountsService) {
+
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 
   ngOnInit(): void {
     this.accountsService.getLoggedUserHistory().then((res) => {
       this.dataSource = new MatTableDataSource<any>(res.data);
-      this.dataSource.paginator = this.paginator;
+      this.dataSource.paginator = this.paginator;      
     });
   }
 }

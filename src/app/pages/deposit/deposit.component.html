@@ -1,5 +1,13 @@
-<mat-card>
-  <h1>Depositar</h1>
+<mat-card class="deposit-wrapper">
+  <h1>Carga de Saldo</h1>
   <br>
-
+  <form [formGroup]="depositFormGroup">
+    <mat-form-field appearance="fill">
+      <mat-label>Cantidad a Depositar</mat-label>
+      <input matInput formControlName="ammount" type="number">     
+    </mat-form-field>
+    <br>    
+  </form>
+  <br>
+  <button mat-raised-button  (click)="deposit()" class="depositBtn">Cargar Saldo</button>
 </mat-card>

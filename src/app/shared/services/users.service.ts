@@ -33,15 +33,14 @@ export class UsersService {
     username,
     password,
     names,
-    last_names,
-    gender,
+    last_names,    
     email
-  ): Promise<{ username; password; names; last_names; gender; email }> => {
+  ): Promise<{ username; password; names; last_names; email }> => {
     const url = `${this.endPoint}`;
     return this.http
-      .post<{ username; password; names; last_names; gender; email }>(
+      .post<{ username; password; names; last_names; email }>(
         url,
-        { username, password, names, last_names, gender, email },
+        { username, password, names, last_names, email },
         { headers: this.httpHeaders }
       )
       .toPromise();
