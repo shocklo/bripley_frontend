@@ -43,7 +43,8 @@ export class RegisterComponent implements OnInit {
         registerFormGroupValue.last_names,      
         registerFormGroupValue.email
       );
-      console.log(registerResult);
+      console.log(registerResult);//TOAST
+      this.snackBar.open("Usuario creado exitosamente, favor revisa tu correo electrónico dentro de los próximos minutos para validar tu cuenta.");
       await this.router.navigate(['/', 'auth', 'login']);
     } catch (e) {
       this.snackBar.open(e.error.message);
