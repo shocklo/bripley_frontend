@@ -1,0 +1,21 @@
+<mat-card>
+  <h1>Bienveni2</h1>
+  <form [formGroup]="loginFormGroup">
+    <mat-form-field appearance="fill">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username" type="text">
+      <mat-icon matSuffix>account_circle</mat-icon>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+      <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </mat-form-field>
+  </form>
+  <br>
+  <button mat-raised-button [disabled]="loginInProgress" (click)="login()">Iniciar Sesión</button>
+  <br>
+  <br>
+  <a [routerLink]="['/','auth','register']">Registrar una cuenta</a>
+</mat-card>

@@ -1,0 +1,19 @@
+<mat-toolbar>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My App</span>
+  <span style="flex: 1"></span>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>power_settings_new</mat-icon>
+  </button>
+</mat-toolbar>
+<div class="dynamic-content-wrapper">
+  <router-outlet></router-outlet>
+</div>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item [routerLink]="['/', 'pages', 'history']">History</button>
+  <button mat-menu-item [routerLink]="['/', 'pages', 'withdraw']">Withdraw</button>
+  <button mat-menu-item [routerLink]="['/', 'pages', 'deposit']">Deposit</button>
+  <button mat-menu-item [routerLink]="['/', 'pages', 'transfer']">Transfer</button>
+</mat-menu>

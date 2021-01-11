@@ -1,0 +1,40 @@
+<mat-card>
+  <h1>Registro</h1>
+  <form [formGroup]="registerFormGroup">
+    <mat-form-field appearance="fill">
+      <mat-label>username</mat-label>
+      <input matInput formControlName="username" type="text">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>password</mat-label>
+      <input matInput formControlName="password" type="text">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>names</mat-label>
+      <input matInput formControlName="names" type="text">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>last_names</mat-label>
+      <input matInput formControlName="last_names" type="text">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>gender</mat-label>
+      <input matInput formControlName="gender" type="text">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>email</mat-label>
+      <input matInput formControlName="email" type="text">
+    </mat-form-field>
+    <br>
+  </form>
+  <br>
+  <button mat-raised-button [disabled]="registerInProgress" (click)="register()">Registrarse</button>
+  <br>
+  <br>
+  <a [routerLink]="['/','auth','login']">Iniciar sesión</a>
+</mat-card>
