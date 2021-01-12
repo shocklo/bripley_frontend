@@ -13,7 +13,7 @@ export class HistoryComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  displayedColumns = ['type_movement', 'from_user', 'to_user', 'ammount'];
+  displayedColumns = ['type_movement', 'from_user', 'to_user', 'ammount', 'ammount_before_from', 'ammount_after_from'];
   dataSource: MatTableDataSource<any>;
   myAccount = 0;
   constructor(private AccountsService: AccountsService) {
