@@ -12,18 +12,24 @@ export class DepositComponent implements OnInit {
   hide = true;
   depositFormGroup: FormGroup;
   depositProgress = false;
-
+  myAccount = 0;
+  ammount: any;
   constructor(
     private AccountsService: AccountsService,
     private router: Router,
     private snackBar: MatSnackBar
   ) {
     this.depositFormGroup = new FormGroup({
-      ammount: new FormControl(null, [Validators.required])
+      ammount: new FormControl(null, [Validators.required, Validators.min(1)])
     });
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.AccountsService.getLoggedUserAcc().then((res) => {
+      this.myAccount = res.data.ammount;       
+    });
+
+   }
 
   async deposit(): Promise<any> {    
     if (this.depositFormGroup.invalid) {      

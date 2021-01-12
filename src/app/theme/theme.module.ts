@@ -14,6 +14,7 @@ import { MatTableModule } from '@angular/material/table';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
+
 const MODULE_IMPORTS = [
   ReactiveFormsModule,
   MatCardModule,
@@ -27,6 +28,7 @@ const MODULE_IMPORTS = [
   MatMenuModule,
   MatTableModule,
   MatPaginatorModule,
+  
 ];
 
 @NgModule({

@@ -5,10 +5,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
+
 const CORE_MODULE_EXPORTS = [
   HttpClientModule,
   FormsModule,
-  ReactiveFormsModule,
+  ReactiveFormsModule  
 ];
 
 export const tokenGetter = () => {
@@ -37,7 +38,7 @@ export class CoreModule {
       providers: [
         {
           provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
-          useValue: { duration: 2500 },
+          useValue: { duration: 5000 },
         },
       ],
     };

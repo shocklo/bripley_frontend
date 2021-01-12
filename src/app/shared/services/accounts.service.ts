@@ -10,6 +10,7 @@ export class AccountsService {
   private endPointDeposit = `${environment.API_URL}/accounts/doDeposit`;
   private endPointWithdraw = `${environment.API_URL}/accounts/doWithdraw`;
   private endPointTransfer = `${environment.API_URL}/accounts/transfer`;
+  private endPointMyAcc = `${environment.API_URL}/accounts/myAccount`;
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }
@@ -61,7 +62,14 @@ export class AccountsService {
       .toPromise();
   };
 
+  getLoggedUserAcc = (): Promise<any> => {
+    const url = `${this.endPointMyAcc}`;
+    return this.http
+      .get<any>(url, { headers: this.httpHeaders })
+      .toPromise();
+  };
 
+  
 
 
 

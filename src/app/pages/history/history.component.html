@@ -1,5 +1,8 @@
 <mat-card class="historyWrap">
   <h1>Historial de movimientos</h1>
+  Tu saldo actual es: {{ myAccount  | currency : 'USD' : 'symbol' : '1.0-0'}}
+  <br>
+  <br>
   <mat-form-field>
     <mat-label>Filtro:</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Dato a filtrar" #input>
@@ -20,7 +23,7 @@
       </ng-container>
       <ng-container matColumnDef="ammount">
         <th mat-header-cell *matHeaderCellDef> Cantidad </th>
-        <td mat-cell *matCellDef="let element"> {{element.ammount}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.ammount | currency : 'USD' : 'symbol' : '1.0-0' }} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

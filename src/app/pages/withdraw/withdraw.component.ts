@@ -12,6 +12,7 @@ export class WithdrawComponent implements OnInit {
   hide = true;
   withdrawFormGroup: FormGroup;
   withdrawProgress = false;
+  myAccount = 0;
 
   constructor(
     private AccountsService: AccountsService,
@@ -20,11 +21,15 @@ export class WithdrawComponent implements OnInit {
 
   ) {
     this.withdrawFormGroup = new FormGroup({
-      ammount: new FormControl(null, [Validators.required])
+      ammount: new FormControl(null, [Validators.required, Validators.min(1)])
     });
    }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.AccountsService.getLoggedUserAcc().then((res) => {
+      this.myAccount = res.data.ammount;       
+    });
+   }
 
   async withdraw(): Promise<any> {    
     if (this.withdrawFormGroup.invalid) {      

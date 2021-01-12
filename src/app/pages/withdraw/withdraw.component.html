@@ -1,14 +1,13 @@
 <mat-card class="withdraw-wrapper">
     <h1>Retiro de Saldo</h1>
     <br>
-    Tu saldo actual es:
+    Tu saldo actual es: {{ myAccount  | currency : 'USD' : 'symbol' : '1.0-0'}}
     <br>
-    Luego del movimiento quedarás con:
     <br>
     <form [formGroup]="withdrawFormGroup">
       <mat-form-field appearance="fill">
         <mat-label>Cantidad a Retirar</mat-label>
-        <input matInput formControlName="ammount" type="number">     
+        <input matInput formControlName="ammount" type="number" onkeypress="return event.charCode >= 48 && event.charCode <= 57">     
       </mat-form-field>
       <br>    
     </form>

@@ -15,8 +15,8 @@ export class HistoryComponent implements OnInit {
 
   displayedColumns = ['type_movement', 'from_user', 'to_user', 'ammount'];
   dataSource: MatTableDataSource<any>;
-
-  constructor(private accountsService: AccountsService) {
+  myAccount = 0;
+  constructor(private AccountsService: AccountsService) {
 
   }
 
@@ -34,9 +34,13 @@ export class HistoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.accountsService.getLoggedUserHistory().then((res) => {
+    this.AccountsService.getLoggedUserHistory().then((res) => {
       this.dataSource = new MatTableDataSource<any>(res.data);
       this.dataSource.paginator = this.paginator;      
     });
+    this.AccountsService.getLoggedUserAcc().then((res) => {
+      this.myAccount = res.data.ammount;       
+    });
+
   }
 }

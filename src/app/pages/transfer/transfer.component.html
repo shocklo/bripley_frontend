@@ -1,14 +1,18 @@
 <mat-card class="transfer-wrapper">
     <h1>Transferencia de Saldo</h1>
     <br>
+        Tu saldo actual es: {{ myAccount  | currency : 'USD' : 'symbol' : '1.0-0'}}
+    <br>
+    <br>
     <form [formGroup]="transferFormGroup">
         <mat-form-field appearance="fill">
             <mat-label>Destinatario (Rut)</mat-label>
-            <input matInput formControlName="id_user_to_transfer" type="text">
+            <input #id_user_to_transfer matInput formControlName="id_user_to_transfer" type="text" (input)="checkRut(id_user_to_transfer)" onkeypress="return event.charCode == 107 || (event.charCode >= 48 && event.charCode <= 57)">
         </mat-form-field>
+        <br>
         <mat-form-field appearance="fill">
             <mat-label>Cantidad a Transferir</mat-label>
-            <input matInput formControlName="ammount" type="number">
+            <input matInput formControlName="ammount" type="number" onkeypress="return event.charCode >= 48 && event.charCode <= 57" >
         </mat-form-field>
         <br>
     </form>

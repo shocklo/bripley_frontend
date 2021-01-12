@@ -22,12 +22,12 @@ export class RegisterComponent implements OnInit {
       username: new FormControl(null, [Validators.required]),
       password: new FormControl(null, [Validators.required]),
       names: new FormControl(null, [Validators.required]),
-      last_names: new FormControl(null, [Validators.required]),    
-      email: new FormControl(null, [Validators.required]),
+      last_names: new FormControl(null, [Validators.required]),
+      email: new FormControl(null, [Validators.required, Validators.email]),
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   async register(): Promise<any> {
     if (this.registerFormGroup.invalid) {
@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
         registerFormGroupValue.username,
         registerFormGroupValue.password,
         registerFormGroupValue.names,
-        registerFormGroupValue.last_names,      
+        registerFormGroupValue.last_names,
         registerFormGroupValue.email
       );
       console.log(registerResult);//TOAST
@@ -52,4 +52,36 @@ export class RegisterComponent implements OnInit {
       this.registerInProgress = false;
     }
   }
+
+
+  checkRut(rut) {    
+    let valor = rut.value.replace('.', '');
+    valor = valor.replace('-', '');
+    let cuerpo = valor.slice(0, -1);
+    let dv = valor.slice(-1).toUpperCase();
+    rut.value = cuerpo + '-' + dv;
+    if (cuerpo.length < 7) {
+       rut.setCustomValidity("RUT Incompleto"); return false; 
+    }
+    let suma = 0;
+    let multiplo = 2;
+    for (let i = 1; i <= cuerpo.length; i++) {
+      let index = multiplo * valor.charAt(cuerpo.length - i);
+      suma = suma + index;
+      if (multiplo < 7) { multiplo = multiplo + 1; } else { multiplo = 2; }
+    }
+    let dvEsperado = 11 - (suma % 11);
+    dv = (dv == 'K') ? 10 : dv;
+    dv = (dv == 0) ? 11 : dv;
+    if (dvEsperado != dv) {
+       rut.setCustomValidity("RUT Inválido"); return false;
+    }
+   
+    return true;
+  }
+
+
+
+
+
 }

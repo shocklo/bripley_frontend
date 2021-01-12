@@ -3,7 +3,7 @@
   <form [formGroup]="registerFormGroup">
     <mat-form-field appearance="fill">
       <mat-label>Rut</mat-label>
-      <input matInput formControlName="username" type="text">
+      <input #username matInput formControlName="username" type="text" (input)="checkRut(username)" onkeypress="return event.charCode == 107 || (event.charCode >= 48 && event.charCode <= 57)" >
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">

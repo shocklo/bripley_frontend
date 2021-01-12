@@ -18,11 +18,10 @@ export class ValidateComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {
     this.activatedRoute.queryParams.subscribe((params) => {
-      if (params.user_id && params.code) {
+      if (params.id_user && params.code) {
         this.usersService
-          .validate(params.user_id, params.code)
-          .then((res) => {
-            console.log(res);
+          .validate(params.id_user, params.code)
+          .then((res) => {            
             this.snackBar.open(res.message);
             this.router.navigate(['/', 'auth', 'login']);
           })
