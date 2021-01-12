@@ -34,7 +34,9 @@ export class LoginComponent implements OnInit {
     }
     this.loginInProgress = true;
     try {
+     
       const loginFormGroupValue = this.loginFormGroup.value;
+      
       const loginResult = await this.usersService.login(
         loginFormGroupValue.username,
         loginFormGroupValue.password
@@ -53,23 +55,6 @@ export class LoginComponent implements OnInit {
     valor = valor.replace('-', '');
     let cuerpo = valor.slice(0, -1);
     let dv = valor.slice(-1).toUpperCase();
-    rut.value = cuerpo + '-' + dv;
-    if (cuerpo.length < 7) {
-       rut.setCustomValidity("RUT Incompleto"); return false; 
-    }
-    let suma = 0;
-    let multiplo = 2;
-    for (let i = 1; i <= cuerpo.length; i++) {
-      let index = multiplo * valor.charAt(cuerpo.length - i);
-      suma = suma + index;
-      if (multiplo < 7) { multiplo = multiplo + 1; } else { multiplo = 2; }
-    }
-    let dvEsperado = 11 - (suma % 11);
-    dv = (dv == 'K') ? 10 : dv;
-    dv = (dv == 0) ? 11 : dv;
-    if (dvEsperado != dv) {
-       rut.setCustomValidity("RUT Inválido"); return false;
-    }   
-    return true;
+    rut.value = cuerpo+dv;
   }
 }
