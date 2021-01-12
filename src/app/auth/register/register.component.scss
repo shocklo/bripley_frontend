@@ -1,5 +1,8 @@
 .registrerWarp{
     padding:45px;    
+    margin-left: auto;
+    margin-right: auto;
+    max-width:550px;
 }
 
 .registerBtn{
@@ -7,6 +10,9 @@
    
 }
 
-mat-form-field.mat-form-field {
+.registerBtnMain{
     width:100%;
-  }
+    color:#FFFFFF;
+    background-color: #894590;
+}
+

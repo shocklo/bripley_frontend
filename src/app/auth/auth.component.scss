@@ -1,7 +1,18 @@
 .auth-wrapper {
   height: 100%;
-  display: flex;
+  display: block;
   align-items: center;
   justify-content: center;
   background-color: #ECEAE9;
 }
+
+.auth-logo{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 25%;
+  max-width: 250px;
+}
+
+
+
